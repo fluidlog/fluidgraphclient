@@ -1,0 +1,3 @@
+[submodule "assets/fluidgraph"]
+	path = assets/fluidgraph
+	url = https://github.com/fluidlog/fluidgraph.git
