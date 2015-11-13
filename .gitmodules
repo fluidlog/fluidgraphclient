@@ -1,3 +1,6 @@
 [submodule "assets/fluidgraph"]
 	path = assets/fluidgraph
 	url = https://github.com/fluidlog/fluidgraph.git
+[submodule "assets/LDP-framework"]
+	path = assets/LDP-framework
+	url = https://github.com/Open-Initiative/LDP-framework.git
