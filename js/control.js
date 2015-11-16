@@ -25,7 +25,8 @@ $('#newGraph')
   });
 
 $('#openGraph').click(function() {
-  myGraph.getContentLocalStorage();
+  myGraph.getListOfGraphsInLocalStorage();
+  myGraph.getListOfGraphsInExternalStorage();
   if (myGraph.listOfLocalGraphs.length)
   {
     myGraph.displayContentOpenGraphModal();
