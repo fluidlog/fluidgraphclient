@@ -25,21 +25,18 @@ $('#newGraph')
   });
 
 $('#openGraph').click(function() {
+  myGraph.selectOpenedGraphInModal();
   myGraph.getListOfGraphsInLocalStorage();
   myGraph.getListOfGraphsInExternalStorage();
-  if (myGraph.listOfLocalGraphs.length)
-  {
-    myGraph.displayContentOpenGraphModal();
-    $('#openGraphModal')
-      .modal({
-            onApprove : function()
-              {
-                myGraph.openGraph();
-              }
-            })
-      .modal('show');
-  }
-  else alert("No graph in local storage !")
+
+  $('#openGraphModal')
+    .modal({
+          onApprove : function()
+            {
+              myGraph.openGraph();
+            }
+          })
+    .modal('show');
 })
 .popup({
   inline: true,
@@ -61,14 +58,14 @@ $("#saveGraph").click(function () {
             onApprove : function()
               {
                 thisGraph.graphName = $('#graphNameInput').val();
-                myGraph.saveGraphToLocalStorage();
+                //myGraph.saveGraphToLocalStorage();
                 myGraph.saveGraphToExternalStore();
               }
             })
       .modal('show');
   }
   else {
-    myGraph.saveGraphToLocalStorage();
+    //myGraph.saveGraphToLocalStorage();
     myGraph.saveGraphToExternalStore();
   }
 })
