@@ -58,15 +58,15 @@ $("#saveGraph").click(function () {
             onApprove : function()
               {
                 thisGraph.graphName = $('#graphNameInput').val();
-                //myGraph.saveGraphToLocalStorage();
-                myGraph.saveGraphToExternalStore();
+                myGraph.saveGraphToLocalStorage();
+                //myGraph.saveGraphToExternalStore();
               }
             })
       .modal('show');
   }
   else {
-    //myGraph.saveGraphToLocalStorage();
-    myGraph.saveGraphToExternalStore();
+    myGraph.saveGraphToLocalStorage();
+    //myGraph.saveGraphToExternalStore();
   }
 })
 .popup({
@@ -81,7 +81,7 @@ $("#saveGraph").click(function () {
 
 
 $("#manageGraph").click(function () {
-  myGraph.getContentLocalStorage();
+  myGraph.getListOfGraphsInLocalStorage();
   if (myGraph.listOfLocalGraphs.length > 0)
   {
     myGraph.displayContentManageGraphModal()
@@ -177,7 +177,7 @@ $('#sidebarMenuUploadGraphItem').click(function() {
 
 $('#sidebarMenuDownloadGraphItem')
   .click(function() {
-    myGraph.downloadGraph(myGraph);
+    myGraph.downloadGraph();
   })
   .popup({
     inline: true,

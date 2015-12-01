@@ -73,6 +73,7 @@ $(document).ready()
   {
     myGraph.loadLocalGraph(openedGraph);
   }
+  else myGraph.newGraph();
 
   var checkboxIsInitialized = false;
   menuInitialisation(myGraph);
