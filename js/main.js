@@ -50,6 +50,11 @@ function menuInitialisation(myGraph) {
   else
     $('#displayIdCheckbox').checkbox('uncheck');
 
+  if (myGraph.typeLdpServer == 'external')
+    $('#typeLdpServerCheckbox').checkbox('check');
+  else
+    $('#typeLdpServerCheckbox').checkbox('uncheck');
+
   if (myGraph.config.debug) console.log("checkboxInitialisation end");
 }
 
@@ -59,7 +64,7 @@ $(document).ready()
   var myGraph = new FluidGraph();
 
   //Load default graph (Démo, explaination...)
-  myGraph.d3data = getMockData(3);
+  myGraph.d3Data = getMockData(3);
 
   myGraph.initSvgContainer("#chart");
 
@@ -71,9 +76,9 @@ $(document).ready()
   var openedGraph = myGraph.getOpenedGraph();
   if (openedGraph)
   {
-    myGraph.loadLocalGraph(openedGraph);
+    myGraph.loadGraph(thisGraph.typeLdpServer, openedGraph);
   }
-  else myGraph.newGraph();
+  // else myGraph.newGraph(); // when no graph exist, getMockData(3)
 
   var checkboxIsInitialized = false;
   menuInitialisation(myGraph);

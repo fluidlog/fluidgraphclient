@@ -125,10 +125,22 @@
           <i class="save icon"></i>
         </div>
         <div class="description" >
-            <p>Please enter the name of the graph (without illegal caracters) and press save button.</p>
-            <div class="ui input" >
-              <input type="text" id="graphNameInput" accept="text">
+          <div class="ui segment">
+            <div class="ui vertical segment">
+              <p>Choose the type of the saving (local or external)</p>
+              <p>If you choose external, the server will choose a name</p>
+              <a class="ui toggle checkbox" id="typeLdpServerCheckbox">
+                <label>Default : <b>local</b>, check for external</label>
+                <input type="checkbox">
+              </a>
             </div>
+            <div class="ui vertical segment" id="graphNameSegment">
+              <p>Please enter the name of the graph (without illegal caracters) and press save button.</p>
+              <div class="ui input" >
+                <input type="text" id="graphNameInput" accept="text">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="actions">

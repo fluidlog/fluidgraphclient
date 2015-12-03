@@ -50,7 +50,7 @@ $('#openGraph').click(function() {
 
 $("#saveGraph").click(function () {
   var graphNameLabel = $('#graphNameLabel').html();
-  if (graphNameLabel == myGraph.config.newGraphName)
+  if (graphNameLabel == myGraph.consts.UNTILTED_GRAPH_NAME)
   {
     $('#graphNameInput').val("");
     $('#saveGraphModal')
@@ -58,15 +58,13 @@ $("#saveGraph").click(function () {
             onApprove : function()
               {
                 thisGraph.graphName = $('#graphNameInput').val();
-                myGraph.saveGraphToLocalStorage();
-                //myGraph.saveGraphToExternalStore();
+                thisGraph.saveGraph();
               }
             })
       .modal('show');
   }
   else {
-    myGraph.saveGraphToLocalStorage();
-    //myGraph.saveGraphToExternalStore();
+    myGraph.saveGraph();
   }
 })
 .popup({
@@ -188,6 +186,17 @@ $('#sidebarMenuDownloadGraphItem')
       hide: 500
     }
   });
+
+$('#typeLdpServerCheckbox').checkbox({
+  onChecked:function() {
+    myGraph.typeLdpServer = "external";
+    $('#graphNameSegment').hide();
+  },
+  onUnchecked: function() {
+    myGraph.typeLdpServer = "local";
+    $('#graphNameSegment').show();
+  },
+});
 
 $('#curvesLinksCheckbox').checkbox({
   onChecked:function() {
