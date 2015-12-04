@@ -267,4 +267,15 @@ $('#displayIdCheckbox').checkbox({
   }
 });
 
+$('#LinkCreationModeCheckbox').checkbox({
+  onChecked: function() {
+    myGraph.config.makeLinkSelectingNode = "On";
+    myGraph.refreshGraph();
+  },
+  onUnchecked: function() {
+    myGraph.config.makeLinkSelectingNode = "Off";
+    myGraph.refreshGraph();
+  }
+});
+
 $('#message').hide();

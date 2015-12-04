@@ -55,6 +55,11 @@ function menuInitialisation(myGraph) {
   else
     $('#typeLdpServerCheckbox').checkbox('uncheck');
 
+  if (myGraph.config.makeLinkSelectingNode == 'On')
+    $('#LinkCreationModeCheckbox').checkbox('check');
+  else
+    $('#LinkCreationModeCheckbox').checkbox('uncheck');
+    
   if (myGraph.config.debug) console.log("checkboxInitialisation end");
 }
 
