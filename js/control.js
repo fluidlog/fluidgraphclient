@@ -106,25 +106,35 @@ $("#manageGraph").click(function () {
   }
 });
 
-$('#focusContextNode')
-  .click(function() {
-    myGraph.focusContextNode(); //On selected node
-    $('#focusContextNodeOff').show();
-    $('#focusContextNode').hide();
-  })
-  .popup({
-    inline: true,
-    hoverable: true,
-    position: 'bottom left',
-    delay: {
-      show: 100,
-      hide: 500
-    }
-  });
+if (thisGraph.config.makeLinkSelectingNode == "On" && thisGraph.state.selectedNode)
+{
+  $('#focusContextNode')
+    .click(function() {
+      thisGraph.focusContextNode(thisGraph.state.selectedNode);
+
+      $('#focusContextNodeOff').show();
+      $('#focusContextNode').hide();
+    })
+    .popup({
+      inline: true,
+      hoverable: true,
+      position: 'bottom left',
+      delay: {
+        show: 100,
+        hide: 500
+      }
+    });
+}
+else
+{
+  $('#focusContextNodeOff').hide();
+  $('#focusContextNode').hide();
+}
+
 
 $('#focusContextNodeOff')
   .click(function() {
-    myGraph.focusContextNodeOff();
+    thisGraph.focusContextNodeOff();
     $('#focusContextNodeOff').hide();
     $('#focusContextNode').show();
   })
