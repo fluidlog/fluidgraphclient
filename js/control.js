@@ -26,8 +26,8 @@ $('#newGraph')
 
 $('#openGraph').click(function() {
   myGraph.selectOpenedGraphInModal();
-  myGraph.getListOfGraphsInLocalStorage();
-  myGraph.getListOfGraphsInExternalStorage();
+  myGraph.getListOfGraphsInLocalStorage("open");
+  myGraph.getListOfGraphsInExternalStorage("open");
 
   $('#openGraphModal')
     .modal({
@@ -79,7 +79,8 @@ $("#saveGraph").click(function () {
 
 
 $("#manageGraph").click(function () {
-  myGraph.getListOfGraphsInLocalStorage();
+  myGraph.getListOfGraphsInLocalStorage("manage");
+  myGraph.getListOfGraphsInExternalStorage("manage");
   if (myGraph.listOfLocalGraphs.length > 0)
   {
     myGraph.displayContentManageGraphModal()
@@ -95,6 +96,19 @@ $("#manageGraph").click(function () {
     else {
       alert ("You don't have any graph in your local store")
     }
+})
+.popup({
+  inline: true,
+  hoverable: true,
+  position: 'bottom left',
+  delay: {
+    show: 100,
+    hide: 500
+  }
+});
+
+$("#publishGraph").click(function () {
+    myGraph.publishGraph()
 })
 .popup({
   inline: true,
