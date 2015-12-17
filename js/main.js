@@ -59,7 +59,7 @@ function menuInitialisation(myGraph) {
     $('#LinkCreationModeCheckbox').checkbox('check');
   else
     $('#LinkCreationModeCheckbox').checkbox('uncheck');
-    
+
   if (myGraph.config.debug) console.log("checkboxInitialisation end");
 }
 
@@ -67,9 +67,6 @@ $(document).ready()
 {
   //  console.log(JSON.stringify(d3data));
   var myGraph = new FluidGraph();
-
-  //Load default graph (Démo, explaination...)
-  myGraph.d3Data = getMockData(3);
 
   myGraph.initSvgContainer("#chart");
 
@@ -83,7 +80,10 @@ $(document).ready()
   {
     myGraph.loadGraph(thisGraph.typeLdpServer, openedGraph);
   }
-  // else myGraph.newGraph(); // when no graph exist, getMockData(3)
+  else {
+    //Load default graph (Démo, explaination...)
+    myGraph.d3Data = getMockData(3);
+  }
 
   var checkboxIsInitialized = false;
   menuInitialisation(myGraph);
@@ -96,5 +96,6 @@ $(document).ready()
 
   checkboxIsInitialized = true;
 
-  myGraph.drawGraph();
+  if (myGraph.d3Data.nodes.length > 0)
+    myGraph.drawGraph();
 }
