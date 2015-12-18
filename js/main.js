@@ -51,9 +51,15 @@ function menuInitialisation(myGraph) {
     $('#displayIdCheckbox').checkbox('uncheck');
 
   if (myGraph.typeLdpServer == 'external')
+  {
     $('#typeLdpServerCheckbox').checkbox('check');
+    $('#graphNameSegment').hide();
+  }
   else
+  {
     $('#typeLdpServerCheckbox').checkbox('uncheck');
+    $('#graphNameSegment').show();
+  }
 
   if (myGraph.config.makeLinkSelectingNode == 'On')
     $('#LinkCreationModeCheckbox').checkbox('check');

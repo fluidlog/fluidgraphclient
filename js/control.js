@@ -49,10 +49,13 @@ $('#openGraph').click(function() {
 });
 
 $("#saveGraph").click(function () {
-  var graphNameLabel = $('#graphNameLabel').html();
+  var graphNameLabel = $('#graphNameLabel').html().split(" (")[0];
+
   if (graphNameLabel == myGraph.consts.UNTILTED_GRAPH_NAME)
-  {
     $('#graphNameInput').val("");
+  else
+    $('#graphNameInput').val(thisGraph.graphName);
+
     $('#saveGraphModal')
       .modal({
             onApprove : function()
@@ -62,10 +65,6 @@ $("#saveGraph").click(function () {
               }
             })
       .modal('show');
-  }
-  else {
-    myGraph.saveGraph();
-  }
 })
 .popup({
   inline: true,
@@ -80,7 +79,7 @@ $("#saveGraph").click(function () {
 
 $("#manageGraph").click(function () {
   myGraph.getListOfGraphsInLocalStorage("manage");
-  myGraph.getListOfGraphsInExternalStorage("manage");
+  myGraph.getListOfGraphsInExternalStorage(myGraph.externalStore.uri, "manage");
   if (myGraph.listOfLocalGraphs.length > 0)
   {
     myGraph.displayContentManageGraphModal()
