@@ -65,7 +65,6 @@ function menuInitialisation(myGraph) {
 
 $(document).ready()
 {
-  //  console.log(JSON.stringify(d3data));
   var myGraph = new FluidGraph();
 
   myGraph.initSvgContainer("#chart");
@@ -75,10 +74,24 @@ $(document).ready()
                             template : "",
                             partials : ""})
 
-  var openedGraph = myGraph.getOpenedGraph();
-  if (openedGraph)
+  // location.hash = #https://ldp.virtual-assembly.org:8443/2013/cartopair/2a1499b5dc
+  if (window.location.hash)
   {
-    myGraph.loadGraph(thisGraph.typeLdpServer, openedGraph);
+    // myGraph.ldpGraphName = https://ldp.virtual-assembly.org:8443/2013/cartopair/2a1499b5dc
+    myGraph.ldpGraphName = window.location.hash.substring(1);
+    myGraph.openedGraph = myGraph.ldpGraphName;
+    // myGraph.graphName = 2a1499b5dc
+    myGraph.graphName = myGraph.openedGraph.split("/").pop();
+    // myGraph.externalStore.uri = https://ldp.virtual-assembly.org:8443/2013/cartopair/
+    myGraph.externalStore.uri = myGraph.openedGraph.split(myGraph.graphName)[0];
+    myGraph.typeLdpServer = "external";
+  }
+  else
+    myGraph.openedGraph = myGraph.getOpenedGraph();
+
+  if (myGraph.openedGraph)
+  {
+    myGraph.loadGraph(myGraph.typeLdpServer, myGraph.openedGraph);
   }
   else {
     //Load default graph (Démo, explaination...)

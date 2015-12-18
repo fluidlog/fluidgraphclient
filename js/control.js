@@ -27,7 +27,7 @@ $('#newGraph')
 $('#openGraph').click(function() {
   myGraph.selectOpenedGraphInModal();
   myGraph.getListOfGraphsInLocalStorage("open");
-  myGraph.getListOfGraphsInExternalStorage("open");
+  myGraph.getListOfGraphsInExternalStorage(myGraph.externalStore.uri, "open");
 
   $('#openGraphModal')
     .modal({
