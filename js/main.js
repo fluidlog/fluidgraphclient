@@ -74,6 +74,7 @@ $(document).ready()
   var myGraph = new FluidGraph();
 
   myGraph.initSvgContainer("#chart");
+  myGraph.mockData0 = getMockData(0);
 
   var store = new MyStore({ container : myGraph.externalStore.uri,
                             context : myGraph.externalStore.context,
@@ -95,9 +96,10 @@ $(document).ready()
   else
     myGraph.openedGraph = myGraph.getOpenedGraph();
 
+  var testGraph;
   if (myGraph.openedGraph)
   {
-    myGraph.loadGraph(myGraph.typeLdpServer, myGraph.openedGraph);
+    testGraph = myGraph.loadGraph(myGraph.typeLdpServer, myGraph.openedGraph);
   }
   else {
     //Load default graph (Démo, explaination...)
@@ -115,6 +117,15 @@ $(document).ready()
 
   checkboxIsInitialized = true;
 
-  if (myGraph.d3Data.nodes.length > 0)
-    myGraph.drawGraph();
+  if (testGraph == true)
+  {
+    if (myGraph.d3Data.nodes.length > 0)
+    {
+      myGraph.drawGraph();
+      if (thisGraph.config.force == "Off")
+      {
+        thisGraph.movexy.call(thisGraph);
+      }
+    }
+  }
 }
