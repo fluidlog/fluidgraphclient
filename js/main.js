@@ -96,6 +96,9 @@ $(document).ready()
   else
     myGraph.openedGraph = myGraph.getOpenedGraph();
 
+  myGraph.openedGraph = "http://benoit-alessandroni.fr/ldp/actor/benoit-alessandroni/";
+  myGraph.typeLdpServer = "external";
+
   var testGraph;
   if (myGraph.openedGraph)
   {
